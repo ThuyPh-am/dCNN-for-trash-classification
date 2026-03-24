@@ -1,29 +1,44 @@
-# dCNN-for-trash-classification
-An end-to-end deep learning project for classifying waste images using Convolutional Neural Networks (CNNs), with a focus on handling class imbalance and improving model generalization.
----
-## Overview
-This project builds a robust image classification pipeline to automatically categorize different types of waste. It includes data preprocessing, model development, hyperparameter tuning, and performance optimization.
+# Garbage Classification using CNN (TensorFlow)
+This project builds a Convolutional Neural Network (CNN) to classify images of waste into six categories:  
+**cardboard, glass, metal, paper, plastic, trash**
 
-Key challenges addressed:
-
-- Class imbalance in real-world datasets
-- Overfitting in deep CNN models
-- Efficient training with limited computational resources
+The goal is to demonstrate an end-to-end deep learning pipeline including:
+- Data loading
+- Exploratory Data Analysis (EDA)
+- Model training
+- Prediction pipeline
 ---
+
 ##  Dataset
 
 - Source: Kaggle (provided by CCHANG, 2018)
 - Task: Multi-class image classification of waste categories
 - Challenge: Significant class imbalance (especially underrepresented "trash" class)
+The dataset consists of labeled images across 6 categories:
+
+- Cardboard
+- Glass
+- Metal
+- Paper
+- Plastic
+- Trash
+
+Each class contains real-world images with varying:
+- Lighting conditions
+- Backgrounds
+- Object shapes
+
+### Some instances
+![alt text](assets/some-train-instances.png)
 
 ---
 
 ### Exploratory Data Analysis
-Initial analysis revealed:
+Key insights:
+- Slight class imbalance across categories
+- High visual similarity between some classes (e.g., plastic vs glass)
+- Variability in image quality and background
 
-- Strong class imbalance across categories
-- Risk of biased learning toward majority classes
-- Need for augmentation and weighting strategies
 
 ### Data Pipeline Development
 
@@ -52,11 +67,7 @@ This improved the model’s ability to learn minority class representations.
 - Added deeper layers to improve feature extraction
 - Tuned architecture to reduce overfitting
 - Adjusted training strategies for better generalization
----
 
-### Handling Model Output
-
-Methods were implemented to enhance the interpretability of model predictions, providing insights into alternative potential classifications. This approach aimed to improve understanding and trust in model outputs.
 ---
 ##  Hyperparameter Tuning
 Used **Keras Tuner** to optimize:
@@ -89,12 +100,19 @@ This improves transparency and trust in model outputs.
 
 ##  Results
 
-- Achieved strong classification performance despite dataset imbalance
-- Demonstrated effectiveness of:
-  - Data augmentation
-  - Class weighting
-  - Hyperparameter tuning
+Establishes a baseline CNN model for garbage classification, with clear opportunities for improvement via transfer learning and tuning
 
+### Accuracy & Loss 
+![alt text](assets/train-val-accuracy-loss.png)
+
+### Loss, Precision, Recall & PRC
+![alt text](assets/Precision-recall-plot.png)
+
+### Observations
+- Training and validation accuracy increase steadily
+- Validation follows training closely → limited overfitting
+- Loss decreases consistently across epochs
+- Model establishes a solid baseline for improvement
 ---
 
 ##  Limitations
